@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//Interface destined to determinate the date format and parse Date to String and vice versa
 public interface DateUtilities {
 
     String DATE_PATTERN = "dd/mm/yyyy";

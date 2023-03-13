@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
 public class ReportSystemImplement implements ReportsSystem{
 
     public void generateReport(Report report){

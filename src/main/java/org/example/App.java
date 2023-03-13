@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.constants.SecondarySubjects;
 import org.example.core.DateUtilities;
 import org.example.core.ReportSystemImplement;
 import org.example.entities.ElementarySchoolStudent;
@@ -18,23 +17,30 @@ import java.util.Scanner;
  */
 public class App 
 {
-
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main( String[] args )
     {
+        //An instance of the scanner class allows us to interact with the user
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Reports System");
         System.out.println("Please, indicate how many reports do you want to create: ");
+
+        //Take the number of reports that the user want to create and save it in a variable
         int reportsAmount = scanner.nextInt();
         System.out.println("Thanks, please complete the following instructions to create the reports");
         System.out.println("Select the Student grade to create the report: ");
+
+        //Let the user select the type of student, if we add more types in the future
+        //we just need to add there logic to the switch structure
         System.out.println("Press 1 for Elementary School Student");
         System.out.println("Press 2 for Secondary School Student");
         int studentType = scanner.nextInt();
         switch (studentType){
             case 1:
                 for (int i = 0 ; i < reportsAmount ; i++){
+                    //Logic for the elementary student
+                    //We use two aux instance, then it will use the data enter by the user
                     Student studentAux = new ElementarySchoolStudent();
                     Report reportAux = new Report();
                     System.out.println("Elementary School Student Information: ");
@@ -46,7 +52,8 @@ public class App
                     studentAux.setDocumentNumber(scanner.nextInt());
                     System.out.println("Report Information: ");
                     System.out.println("Date: ");
-                    Date date = obtenerFecha();
+                    //Call the getDate function, so we can parse the String data to Date type
+                    Date date = getDate();
                     System.out.println("Subject: ");
                     String subject = scanner.next();
                     System.out.println("Final Qualification: ");
@@ -58,6 +65,8 @@ public class App
                     reportAux.setFinalQualification(finalQualification);
 
                     ReportSystemImplement reportSystemImplement = new ReportSystemImplement();
+
+                    //When we have all the data that we need, we call the generateReport function from the ReportSystem
                     reportSystemImplement.generateReport(reportAux);
                 }
                 break;
@@ -74,7 +83,7 @@ public class App
                     studentAux.setDocumentNumber(scanner.nextInt());
                     System.out.println("Report Information: ");
                     System.out.println("Date: ");
-                    Date date = obtenerFecha();
+                    Date date = getDate();
                     System.out.println("Subject: ");
                     String subject = scanner.next();
                     System.out.println("Final Qualification: ");
@@ -86,13 +95,17 @@ public class App
                     reportAux.setFinalQualification(finalQualification);
 
                     ReportSystemImplement reportSystemImplement = new ReportSystemImplement();
+
+                    //When we have all the data that we need, we call the generateReport function from the ReportSystem
                     reportSystemImplement.generateReport(reportAux);
                 }
                 break;
         }
+        //Close the scanner
+        scanner.close();
     }
 
-    private static Date obtenerFecha() {
+    private static Date getDate() {
 
         String userDate = "";
         Date date = null;

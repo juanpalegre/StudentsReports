@@ -1,6 +1,7 @@
 package org.example.constants;
 
 public enum ElementarySubjects {
+
     MATHEMATICS ("Mathematics"),
     ENGLISH ("English"),
     SCIENCE ("Science"),
