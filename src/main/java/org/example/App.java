@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.constants.ElementarySubjects;
+import org.example.constants.SecondarySubjects;
 import org.example.core.DateUtilities;
 import org.example.core.ReportSystemImplement;
 import org.example.entities.ElementarySchoolStudent;
@@ -55,7 +57,7 @@ public class App
                     //Call the getDate function, so we can parse the String data to Date type
                     Date date = getDate();
                     System.out.println("Subject: ");
-                    String subject = scanner.next();
+                    String subject = selectSubject(studentAux);
                     System.out.println("Final Qualification: ");
                     String finalQualification = scanner.next();
 
@@ -85,7 +87,7 @@ public class App
                     System.out.println("Date: ");
                     Date date = getDate();
                     System.out.println("Subject: ");
-                    String subject = scanner.next();
+                    String subject = selectSubject(studentAux);
                     System.out.println("Final Qualification: ");
                     String finalQualification = scanner.next();
 
@@ -122,6 +124,54 @@ public class App
         }
 
         return date;
+    }
+
+    private static String selectSubject(Student student){
+        String subject = "Subject";
+        if (student instanceof ElementarySchoolStudent){
+            System.out.println("Please, select the subject of the report: ");
+            System.out.println(ElementarySubjects.MATHEMATICS + "Press 1");
+            System.out.println(ElementarySubjects.SOCIAL_STUDIES + "Press 2");
+            System.out.println(ElementarySubjects.ENGLISH + "Press 3");
+            System.out.println(ElementarySubjects.SCIENCE + "Press 4");
+            byte selection = scanner.nextByte();
+            switch (selection){
+                case 1:
+                    subject = ElementarySubjects.MATHEMATICS.name();
+                    break;
+                case 2:
+                    subject = ElementarySubjects.SOCIAL_STUDIES.name();
+                    break;
+                case 3:
+                    subject = ElementarySubjects.ENGLISH.name();
+                    break;
+                case 4:
+                    subject = ElementarySubjects.SCIENCE.name();
+                    break;
+            }
+        }else if (student instanceof SecondarySchoolStudent){
+            System.out.println("Please, select the subject of the report: ");
+            System.out.println(SecondarySubjects.ADVANCED_MATHEMATICS + "Press 1");
+            System.out.println(SecondarySubjects.ADVANCED_SCIENCE + "Press 2");
+            System.out.println(SecondarySubjects.COMPUTER_SCIENCE + "Press 3");
+            System.out.println(SecondarySubjects.PHYSICAL_EDUCATION + "Press 4");
+            byte selection = scanner.nextByte();
+            switch (selection){
+                case 1:
+                    subject = SecondarySubjects.ADVANCED_MATHEMATICS.getSUBJECT_NAME();
+                break;
+                case 2:
+                    subject = SecondarySubjects.ADVANCED_SCIENCE.getSUBJECT_NAME();
+                break;
+                case 3:
+                    subject = SecondarySubjects.COMPUTER_SCIENCE.getSUBJECT_NAME();
+                break;
+                case 4:
+                    subject = SecondarySubjects.PHYSICAL_EDUCATION.getSUBJECT_NAME();
+                break;
+            }
+        }
+        return subject;
     }
 
 }
