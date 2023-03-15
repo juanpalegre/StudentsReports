@@ -2,14 +2,12 @@ package org.example.entities;
 
 import org.example.constants.SecondarySubjects;
 
+import javax.security.auth.Subject;
+import java.util.ArrayList;
+
 public class SecondarySchoolStudent extends Student{
 
-    private static final String[] subjects = {
-            SecondarySubjects.ADVANCED_MATHEMATICS.name(),
-            SecondarySubjects.ADVANCED_SCIENCE.name(),
-            SecondarySubjects.PHYSICAL_EDUCATION.name(),
-            SecondarySubjects.COMPUTER_SCIENCE.name()
-    };
+    private final ArrayList<SecondarySubjects> subjectList = new ArrayList<>();
 
     public SecondarySchoolStudent(){
 
@@ -19,7 +17,9 @@ public class SecondarySchoolStudent extends Student{
         super(nombre, apellido, documentNumber);
     }
 
-
+    public ArrayList<SecondarySubjects> getSubjectList(){
+        return subjectList;
+    }
 
 
 }

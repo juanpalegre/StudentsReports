@@ -1,16 +1,12 @@
 package org.example.entities;
 
 import org.example.constants.ElementarySubjects;
-import org.example.constants.SecondarySubjects;
+
+import java.util.ArrayList;
 
 public class ElementarySchoolStudent extends Student{
 
-    private static final String[] subjects = {
-            ElementarySubjects.MATHEMATICS.name(),
-            ElementarySubjects.SOCIAL_STUDIES.name(),
-            ElementarySubjects.SCIENCE.name(),
-            ElementarySubjects.ENGLISH.name()
-    };
+    private final ArrayList<ElementarySubjects> subjectList = new ArrayList<>();
 
     public ElementarySchoolStudent(){
 
@@ -20,5 +16,7 @@ public class ElementarySchoolStudent extends Student{
         super(nombre, apellido, documentNumber);
     }
 
-
+    public ArrayList<ElementarySubjects> getSubjectList(){
+        return subjectList;
+    }
 }

@@ -10,7 +10,7 @@ import java.io.IOException;
 public class ReportSystemImplement implements ReportsSystem{
 
     public void generateReport(Report report){
-
+        //This method get a Report and uses it´s attributes to generate an extract a file with the Student Report
         String fileName = report.getStudent().getApellido() + ".txt";
 
         try {
